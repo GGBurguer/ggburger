@@ -70,4 +70,4 @@ uv add -r requirements/requirements-dev.txt
 ```
 
 ---
-Desarrollado para AnalyticsDevs <3.
+Desarrollado por AnalyticsDevs <3.
