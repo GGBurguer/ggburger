@@ -41,7 +41,7 @@ static/
 docker-data/
 
 # --- uv (Gestor de proyectos) ---
-uv.lock
+# uv.lock
 # Nota: uv.lock DEBE subirse al repositorio. 
 # Solo descomenta la línea anterior si realmente quieres ignorar el archivo de bloqueo, 
 # pero en proyectos modernos de Python se recomienda versionarlo siempre.
