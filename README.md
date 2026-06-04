@@ -13,7 +13,7 @@ Sistema de gestión integral diseñado para el emprendimiento de comida rápida 
 ## 📂 Estructura del Proyecto
 
 El proyecto sigue una arquitectura organizada, separando la configuración central (core) de las aplicaciones específicas (apps):
-
+```text
 .
 ├── docker/             # Configuración de contenedores
 ├── manage.py           # Script de gestión de Django
@@ -22,6 +22,7 @@ El proyecto sigue una arquitectura organizada, separando la configuración centr
 │   ├── apps/           # Aplicaciones modulares
 │   └── core/           # Configuración del proyecto (settings, urls, etc.)
 └── uv.lock             # Bloqueo de dependencias de alta precisión
+```
 
 ## 🛠️ Instalación y Configuración
 
