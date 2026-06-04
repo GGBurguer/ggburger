@@ -1,0 +1,11 @@
+[project]
+name = "ggburger"
+version = "0.1.0"
+description = "Sistema de gestión para emprendimiento de comida rápida (GGBurger)"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "django==6.0.5",
+    "psycopg2-binary==2.9.12",
+    "python-dotenv==1.2.2",
+]

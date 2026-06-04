@@ -1,0 +1,59 @@
+# --- Entorno virtual (usado por uv) ---
+.venv/
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# --- Django ---
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media/
+static/
+
+# --- Docker ---
+.docker-ignore
+# Si usas volúmenes persistentes, excluye sus carpetas locales
+docker-data/
+
+# --- uv (Gestor de proyectos) ---
+uv.lock
+# Nota: uv.lock DEBE subirse al repositorio. 
+# Solo descomenta la línea anterior si realmente quieres ignorar el archivo de bloqueo, 
+# pero en proyectos modernos de Python se recomienda versionarlo siempre.
+
+# --- IDEs y Editores ---
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace
+
+# --- Sistema Operativo ---
+.DS_Store
+Thumbs.db
