@@ -29,28 +29,28 @@ El proyecto sigue una arquitectura organizada, separando la configuración centr
 Este proyecto utiliza uv para la gestión de dependencias. Asegúrate de tenerlo instalado en tu sistema.
 
 1. Clonar el repositorio:
-	```bash
-	git clone https://github.com/GGBurguer/ggburger
-	cd ggburger
-	```
+```bash
+git clone https://github.com/GGBurguer/ggburger
+cd ggburger
+```
 
 2. Sincronizar dependencias:
-   	```bash
-   	uv sync
-	```
+```bash
+uv sync
+```
 
 3. Variables de entorno:
    	Crea un archivo .env en la raíz y configura tus variables (como SECRET_KEY y configuración de base de datos).
 
 4. Ejecutar migraciones:
-	```bash
-   	uv run python manage.py migrate
-	```
+```bash
+uv run python manage.py migrate
+```
 
 5. Iniciar el servidor de desarrollo:
-   	```bash
-   	uv run python manage.py runserver
-	```
+```bash
+uv run python manage.py runserver
+```
 
 ## 🐳 Docker (Opcional)
 
@@ -69,6 +69,9 @@ Ejecute:
 ```bash
 uv add -r requirements/requirements-dev.txt
 ```
+
+[!IMPORTANT]
+Instalar las dependencias solamente debe ser empleado si la sincronización mediante UV falla; de otro modo, se recomienda siempre sincronizar en vez de utilizar el fichero de dependencias manualmente.
 
 ---
 Desarrollado por AnalyticsDevs <3.
