@@ -70,8 +70,8 @@ Ejecute:
 uv add -r requirements/requirements-dev.txt
 ```
 
-[!IMPORTANT]
-Instalar las dependencias solamente debe ser empleado si la sincronización mediante UV falla; de otro modo, se recomienda siempre sincronizar en vez de utilizar el fichero de dependencias manualmente.
+> [!IMPORTANT]
+> Instalar las dependencias solamente debe ser empleado si la sincronización mediante UV falla; de otro modo, se recomienda siempre sincronizar en vez de utilizar el fichero de dependencias manualmente.
 
 ---
 Desarrollado por AnalyticsDevs <3.
