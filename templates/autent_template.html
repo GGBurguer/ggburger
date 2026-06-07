@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<!--
+	ESTO ES SOLO UN TEMPLATE DE PRUEBA
+-->
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+	<form action="{% url 'iniciar_sesion' %}" method="POST">
+		<!-- Clave de serguridad para evitar XSS o envio de peticiones extrañas -->
+		{% csrf_token %} 
+		<label>Usuario</label>
+		<input type="text" name="usuario_txt">
+		<label>Contraseña</label>
+		<input type="password" name="contr_txt">
+		<input type="submit" value="Iniciar sesión" name="enviar_bt">
+	</form>
+</body>
+</html>
