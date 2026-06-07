@@ -2,7 +2,7 @@
 
 -r requirements.txt
 
-python-dotenv==1.2.2
+python-dotenv==1.2.2		# Libreria para leer ficheros .env de variables de entorno
 
 # NO USADOS #
 # ruff==0.15.15
