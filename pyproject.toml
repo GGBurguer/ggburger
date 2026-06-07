@@ -5,7 +5,12 @@ description = "Sistema de gestión para emprendimiento de comida rápida (GGBurg
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "argon2-cffi>=25.1.0",
     "django==6.0.5",
+    "django-stubs==6.0.5",
     "psycopg2-binary==2.9.12",
     "python-dotenv==1.2.2",
 ]
+
+[tool.ruff.format]
+indent-style = "tab"
