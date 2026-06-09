@@ -23,11 +23,11 @@ load_dotenv(dotenv_path=ruta_env)
 # print(f"{ruta_env}")
 
 env = {
-    "host": os.getenv("HOST"),
-    "port": os.getenv("PORT"),
-    "puser": os.getenv("POSTGRES_USER"),
-    "ppass": os.getenv("POSTGRES_PASSWORD"),
-    "pdb": os.getenv("POSTGRES_DB"),
+	"host": os.getenv("HOST"),
+	"port": os.getenv("PORT"),
+	"puser": os.getenv("POSTGRES_USER"),
+	"ppass": os.getenv("POSTGRES_PASSWORD"),
+	"pdb": os.getenv("POSTGRES_DB"),
 }
 
 # Quick-start development settings - unsuitable for production
@@ -45,40 +45,40 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    "django.contrib.admin",
-    "django.contrib.auth",
-    "django.contrib.contenttypes",
-    "django.contrib.sessions",
-    "django.contrib.messages",
-    "django.contrib.staticfiles",
-    "src.apps.autent",  # Aplicación de autenticación
+	"django.contrib.admin",
+	"django.contrib.auth",
+	"django.contrib.contenttypes",
+	"django.contrib.sessions",
+	"django.contrib.messages",
+	"django.contrib.staticfiles",
+	"src.apps.autent",  # Aplicación de autenticación
 ]
 
 MIDDLEWARE = [
-    "django.middleware.security.SecurityMiddleware",
-    "django.contrib.sessions.middleware.SessionMiddleware",
-    "django.middleware.common.CommonMiddleware",
-    "django.middleware.csrf.CsrfViewMiddleware",
-    "django.contrib.auth.middleware.AuthenticationMiddleware",
-    "django.contrib.messages.middleware.MessageMiddleware",
-    "django.middleware.clickjacking.XFrameOptionsMiddleware",
+	"django.middleware.security.SecurityMiddleware",
+	"django.contrib.sessions.middleware.SessionMiddleware",
+	"django.middleware.common.CommonMiddleware",
+	"django.middleware.csrf.CsrfViewMiddleware",
+	"django.contrib.auth.middleware.AuthenticationMiddleware",
+	"django.contrib.messages.middleware.MessageMiddleware",
+	"django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
 ROOT_URLCONF = "core.urls"
 
 TEMPLATES = [
-    {
-        "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": ["templates"],
-        "APP_DIRS": True,
-        "OPTIONS": {
-            "context_processors": [
-                "django.template.context_processors.request",
-                "django.contrib.auth.context_processors.auth",
-                "django.contrib.messages.context_processors.messages",
-            ],
-        },
-    },
+	{
+		"BACKEND": "django.template.backends.django.DjangoTemplates",
+		"DIRS": ["templates"],
+		"APP_DIRS": True,
+		"OPTIONS": {
+			"context_processors": [
+				"django.template.context_processors.request",
+				"django.contrib.auth.context_processors.auth",
+				"django.contrib.messages.context_processors.messages",
+			],
+		},
+	},
 ]
 
 WSGI_APPLICATION = "core.wsgi.application"
@@ -88,14 +88,14 @@ WSGI_APPLICATION = "core.wsgi.application"
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": env["pdb"],
-        "USER": env["puser"],
-        "PASSWORD": env["ppass"],
-        "HOST": env["host"],
-        "PORT": env["port"],
-    }
+	"default": {
+		"ENGINE": "django.db.backends.postgresql",
+		"NAME": env["pdb"],
+		"USER": env["puser"],
+		"PASSWORD": env["ppass"],
+		"HOST": env["host"],
+		"PORT": env["port"],
+	}
 }
 
 # NO USADO
@@ -111,25 +111,39 @@ DATABASES = {
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
-    },
+	{
+		"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
+	},
+	{
+		"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
+	},
+	{
+		"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
+	},
+	{
+		"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
+	},
 ]
 
 # Algoritmos de hasheo empleados para las contraseñas
 PASSWORD_HASHERS = [
-    "django.contrib.auth.hashers.Argon2PasswordHasher",
-    "django.contrib.auth.hashers.PBKDF2PasswordHasher",
+	"django.contrib.auth.hashers.Argon2PasswordHasher",
+	"django.contrib.auth.hashers.PBKDF2PasswordHasher",
 ]
+
+# Configuración de sesion de usuarios
+SESSION_COOKIE_AGE = 3600  # Duracion del toquen de sesion antes de expirar
+SESSION_SAVE_EVERY_REQUEST = (
+	True  # Re-enviar el token con cada peticion para mantener la sesión
+)
+
+# Configuración de los backends de autenticación de sesión
+AUTHENTICATION_BACKENDS = [
+	"django.contrib.auth.backends.ModelBackend",
+]
+
+# Configuración de los modelos de usuario para el middleware de autenticación
+AUTH_USER_MODEL = "autent.Usuario"
 
 
 # Internationalization
