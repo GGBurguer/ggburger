@@ -93,6 +93,12 @@ def iniciar_sesion(request):
 	return HttpResponse(f"Sesion iniciada, Bienvenido {usuario_valido.get_username()}!")
 
 
+# Metodo de testeo de tokens de sesion
+@login_required
+def token_login_test(request):
+	return HttpResponse("Logueado!")
+
+
 # CODIGO SIN USAR
 # # Usuario de prueba
 # # usuario_x = {"us": "bbkmg", "contr": "12345"}
