@@ -145,6 +145,8 @@ AUTHENTICATION_BACKENDS = [
 # Configuración de los modelos de usuario para el middleware de autenticación
 AUTH_USER_MODEL = "autent.Usuario"
 
+# Url principal para el login
+LOGIN_URL = "/users/login/"
 
 # Internationalization
 # https://docs.djangoproject.com/en/6.0/topics/i18n/
