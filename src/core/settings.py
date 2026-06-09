@@ -146,7 +146,7 @@ AUTHENTICATION_BACKENDS = [
 AUTH_USER_MODEL = "autent.Usuario"
 
 # Url principal para el login
-LOGIN_URL = "/users/login/"
+LOGIN_URL = "/apps/login_form/"
 
 # Internationalization
 # https://docs.djangoproject.com/en/6.0/topics/i18n/
