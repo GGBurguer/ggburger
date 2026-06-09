@@ -5,6 +5,9 @@ from django.db import transaction
 # from django.contrib.auth.hashers import make_password, check_password
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth import login, authenticate
+
+# Usarlo en las vistas que requieran de autenticación para ejecutarse
+from django.contrib.auth.decorators import login_required
 from .models import Cocinero, Usuario
 
 # NOTA:
@@ -15,6 +18,7 @@ from .models import Cocinero, Usuario
 
 
 # METODOS AUXILIARES #
+# ---
 
 
 # METODOS DE ACCESO A BD #
@@ -77,7 +81,7 @@ def iniciar_sesion(request):
 
 	# Validación de usuario
 	usuario_valido = authenticate(
-		request, username=credenciales["US"], password=credenciales["CTR"]
+		request, username=credenciales.get("US"), password=credenciales.get("CTR")
 	)
 	# print(f"{usuario_valido}")
 
