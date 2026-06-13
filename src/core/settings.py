@@ -15,10 +15,11 @@ import os
 from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
+print(BASE_DIR)
 
-# ruta_env = f"{BASE_DIR}/.env"
-ruta_env = f"{Path(str(BASE_DIR)).resolve().parent}/.env"  # Ruta .env de prueba, usar el de arriba
+ruta_env = str(BASE_DIR / ".env")
+# ruta_env = f"{Path(str(BASE_DIR)).resolve().parent}/.env"  # Ruta .env de prueba, usar el de arriba
 load_dotenv(dotenv_path=ruta_env)
 # print(f"{ruta_env}")
 
@@ -69,7 +70,7 @@ ROOT_URLCONF = "core.urls"
 TEMPLATES = [
 	{
 		"BACKEND": "django.template.backends.django.DjangoTemplates",
-		"DIRS": ["templates"],
+		"DIRS": [str(BASE_DIR / "templates")],
 		"APP_DIRS": True,
 		"OPTIONS": {
 			"context_processors": [
@@ -132,7 +133,8 @@ PASSWORD_HASHERS = [
 ]
 
 # Configuración de sesion de usuarios
-SESSION_COOKIE_AGE = 3600  # Duracion del toquen de sesion antes de expirar
+# SESSION_COOKIE_AGE = 3600  # Duracion del toquen de sesion antes de expirar
+SESSION_COOKIE_AGE = 60 * 5  # Duracion del toquen de sesion antes de expirar (5 min.)
 SESSION_SAVE_EVERY_REQUEST = (
 	True  # Re-enviar el token con cada peticion para mantener la sesión
 )
@@ -142,7 +144,7 @@ AUTHENTICATION_BACKENDS = [
 	"django.contrib.auth.backends.ModelBackend",
 ]
 
-# Configuración de los modelos de usuario para el middleware de autenticación
+# Configuración del modelo de usuarios para el middleware de autenticación
 AUTH_USER_MODEL = "autent.Usuario"
 
 # Url principal para el login
