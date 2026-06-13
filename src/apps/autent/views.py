@@ -1,27 +1,28 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.db import transaction
 
 # from django.contrib.auth.hashers import make_password, check_password
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth import login, authenticate
-
-# Usarlo en las vistas que requieran de autenticación para ejecutarse
 from django.contrib.auth.decorators import login_required
 from .models import Cocinero, Usuario
+
 
 # NOTA:
 # A la aplicación le falta un algoritmo de encriptación para las contraseñas (FUNCIONAL)
 # Conectar la base de datos y realizar las verificaciones de formulario contra la BD (FUNCIONAL)
-# Implementar sistema de tokens de sesión (FUNCIONAL, PERO PARA TESTEAR)
-# Implementar redireccionamiento al login cuando expire el token (PENDIENTE)
+# Implementar sistema de tokens de sesión (FUNCIONAL)
+# Implementar redireccionamiento al login cuando expire el token (FUNCIONAL)
 
 
 # METODOS AUXILIARES #
 # ---
 
 
-# METODOS DE ACCESO A BD #
+# ACCESOS A BD #
+
+
 def cargar_usuario(request):
 	# Datos hardcodeados de prueba, eliminar mas adelante
 	msg = None
@@ -57,7 +58,9 @@ def buscar_usuario(usuario):
 	return us
 
 
-# METODOS DE VALIDACIÓN #
+# VALIDACIONES DE SESION #
+
+
 # Visualizar el formulario de inicio de sesion (PRUEBA)
 def login_form_template(request):
 	print("> Todo funcional!\n")
@@ -90,16 +93,28 @@ def iniciar_sesion(request):
 
 	# Login y creacion de token de sesión
 	login(request, usuario_valido)
-	return HttpResponse(f"Sesion iniciada, Bienvenido {usuario_valido.get_username()}!")
+	# return HttpResponse(f"Sesion iniciada, Bienvenido {usuario_valido.get_username()}!")
+	# Al validar el acceso, redirije a una pagina de bienvenida
+	return redirect("bienvenida_template")
 
 
-# Metodo de testeo de tokens de sesion
+# ACCESOS VALIDADOS #
+
+
 @login_required
 def token_login_test(request):
 	return HttpResponse("Logueado!")
 
 
-# CODIGO SIN USAR
+# Pagina de bienvenida
+@login_required
+def bienvenida_template(request):
+	return render(request, "usuario_autenticado_template.html")
+
+
+# CODIGO SIN USAR #
+
+
 # # Usuario de prueba
 # # usuario_x = {"us": "bbkmg", "contr": "12345"}
 # usuario_x = buscar_usuario(request.POST["usuario_txt"])
