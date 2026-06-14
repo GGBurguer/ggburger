@@ -8,6 +8,7 @@
 <body>
 	<!-- Clave de serguridad para evitar XSS o envio de peticiones extrañas -->
 	{% csrf_token %}
-	<p>Bienvenido usuario autenticado!</p>
+	<!-- <p>Bienvenido usuario autenticado!</p> -->
+	<p>Bienvenido {{ usuario_autenticado }}</p>
 </body>
 </html>
