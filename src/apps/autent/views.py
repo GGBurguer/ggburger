@@ -30,6 +30,7 @@ def cargar_usuario(request):
 	cnt_us = "1122334455"
 	nombre = "Federico"
 	apellido = "Bazyluk"
+	# Hasheo de constraseña
 	cnt_us = make_password(cnt_us)
 	# print(cnt_us)
 	usuario = Usuario(username=nus, password=cnt_us)
@@ -93,6 +94,7 @@ def iniciar_sesion(request):
 
 	# Login y creacion de token de sesión
 	login(request, usuario_valido)
+	request.session["nombre_usuario"] = usuario_valido.get_username()
 	# return HttpResponse(f"Sesion iniciada, Bienvenido {usuario_valido.get_username()}!")
 	# Al validar el acceso, redirije a una pagina de bienvenida
 	return redirect("bienvenida_template")
@@ -109,7 +111,12 @@ def token_login_test(request):
 # Pagina de bienvenida
 @login_required
 def bienvenida_template(request):
-	return render(request, "usuario_autenticado_template.html")
+	nombre_usuario = request.session.get("nombre_usuario")
+	return render(
+		request,
+		"usuario_autenticado_template.html",
+		{"usuario_autenticado": nombre_usuario},
+	)
 
 
 # CODIGO SIN USAR #
