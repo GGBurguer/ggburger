@@ -3,8 +3,9 @@ from django.contrib.auth.models import AbstractUser
 
 # Modelo de datos simple para la autenticación de los usuarios
 
-# Los tipos de usuarios se van a representar en diferentes clases relacionadas con la clase general usuario,
-# ya que es de esta unica que puede leer django para las funciones de autenticación y validación
+# NOTA:
+# Los tipos de usuarios se van a representar en diferentes clases relacionadas con la clase general Usuario,
+# ya que es de esta unica (la clase Usuario) que puede leer django para las funciones de autenticación y validación
 
 
 # Entidad general de usuarios
